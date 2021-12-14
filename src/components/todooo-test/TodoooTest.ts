@@ -1,8 +1,8 @@
 import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
 
-export class TodoooApp extends LitElement {
-  @property({ type: String }) title = 'My app';
+export class TodoooTest extends LitElement {
+  @property({ type: String }) title = 'My test';
 
   static styles = css`
     :host {
@@ -23,7 +23,9 @@ export class TodoooApp extends LitElement {
   render() {
     return html`
       <main>
-        <h1>Todooo</h1>
+        <h1>Test AAAA</h1>
+        <p>${this.title}</p>
+        <p><a href="/">Home</a></p>
       </main>
     `;
   }
