@@ -3,6 +3,7 @@ import babel from '@rollup/plugin-babel';
 import html from '@web/rollup-plugin-html';
 import { importMetaAssets } from '@web/rollup-plugin-import-meta-assets';
 import { terser } from 'rollup-plugin-terser';
+
 // import { generateSW } from 'rollup-plugin-workbox';
 // import path from 'path';
 

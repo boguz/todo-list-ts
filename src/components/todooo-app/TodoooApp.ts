@@ -1,12 +1,18 @@
 import { LitElement, html, css } from 'lit';
+import { connect } from 'pwa-helpers';
 import { property } from 'lit/decorators.js';
 
+import '../../firestore/firestore.js';
 import '../todooo-login/todooo-login.js';
 
-export class TodoooApp extends LitElement {
+import store from '../../store/store.js';
+
+export class TodoooApp extends connect(store)(LitElement) {
   @property({ type: String }) title = 'My home';
 
   @property({ type: Object }) user = null;
+
+  @property({ type: Object }) state = {};
 
   static styles = css`
     :host {
@@ -15,14 +21,14 @@ export class TodoooApp extends LitElement {
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      font-size: calc(10px + 2vmin);
-      color: #1a2b42;
-      max-width: 960px;
       margin: 0 auto;
-      text-align: center;
-      background-color: var(--todooo-app-background-color);
     }
   `;
+
+  stateChanged(state: any) {
+    console.log('################', state);
+    this.user = state.user?.user || null;
+  }
 
   render() {
     return this.user
