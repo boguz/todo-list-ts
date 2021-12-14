@@ -1,8 +1,12 @@
 import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
 
+import '../todooo-login/todooo-login.js';
+
 export class TodoooApp extends LitElement {
   @property({ type: String }) title = 'My home';
+
+  @property({ type: Object }) user = null;
 
   static styles = css`
     :host {
@@ -21,12 +25,8 @@ export class TodoooApp extends LitElement {
   `;
 
   render() {
-    return html`
-      <main>
-        <h1>TodoooXXXXX</h1>
-        <p>${this.title}</p>
-        <p><a href="/test">Test</a></p>
-      </main>
-    `;
+    return this.user
+      ? html`<h1>HAS USER</h1>`
+      : html`<todooo-login></todooo-login>`;
   }
 }

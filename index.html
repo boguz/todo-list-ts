@@ -7,25 +7,24 @@
   <meta name="Description" content="A simple todo app">
   <base href="/">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap" rel="stylesheet">
+
   <style>
     html,
     body {
       margin: 0;
       padding: 0;
-      font-family: sans-serif;
-      background-color: #ededed;
+      box-sizing: border-box;
     }
   </style>
   <title>Todooo App</title>
 </head>
 
 <body>
-
-  <main>
-    <div id="routerOutlet"></div>
-  </main>
-
-  <script type="module" src="./out-tsc/src/index.js"></script>
+  <todooo-app></todooo-app>
+  <script type="module" src="./out-tsc/src/components/todooo-app/todooo-app.js"></script>
 </body>
 
 </html>
