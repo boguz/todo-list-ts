@@ -33,6 +33,7 @@ export class TodoooMain extends LitElement {
       <todooo-stage></todooo-stage>
       <todooo-add-button></todooo-add-button>
       <todooo-user-settings
+        .user="${this.user}"
         ?visible="${this.userSettings.visible}"
       ></todooo-user-settings>
     `;

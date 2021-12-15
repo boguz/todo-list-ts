@@ -11,13 +11,19 @@ import { firebaseAuth } from '../../firestore/firestoreAuth.js';
 export class TodoooUserSettings extends LitElement {
   @property({ type: Boolean }) visible = false;
 
+  @property({ type: Object }) user = {
+    id: null,
+    displayName: null,
+    avatarURL: null,
+  };
+
   static styles = [todoooSharedStyles, todoooUserSettingsStyles];
 
   render() {
     return html`
       <todooo-scrim @click="${this._onScrimClick}"></todooo-scrim>
       <section class="user-settings__content">
-        <p class="user-settings__user-name">Luke Skywalker</p>
+        <p class="user-settings__user-name">${this.user.displayName}</p>
         <button
           class="button button--small button--align-right"
           @click="${this._onLogoutClick}"
