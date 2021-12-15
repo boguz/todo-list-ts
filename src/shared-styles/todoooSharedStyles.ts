@@ -27,6 +27,17 @@ export const todoooSharedStyles = [
       color: var(--color-text-secondary);
       font-family: var(--font-family-headline);
       font-size: var(--font-size-bigger);
+      padding: 0;
+    }
+
+    .button--small {
+      font-size: var(--font-size-normal);
+    }
+
+    .button--align-right {
+      display: block;
+      margin-left: auto;
+      margin-right: 0;
     }
 
     @media (hover: hover) {

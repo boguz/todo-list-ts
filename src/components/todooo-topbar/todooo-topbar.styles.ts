@@ -24,9 +24,13 @@ export const todoooTopbarStyles = css`
     display: block;
     border-radius: 50%;
     border: 2px solid var(--color-highlight);
-    background-color: var(--color-bg-surface);
+    background-color: var(--color-bg-base);
     overflow: hidden;
     cursor: pointer;
+  }
+
+  :host([usersettingsvisible]) .topbar__avatar {
+    z-index: 1;
   }
 
   .topbar__avatar-image {
@@ -40,7 +44,7 @@ export const todoooTopbarStyles = css`
   @media (hover: hover) {
     .topbar__avatar:hover {
       outline: 2px solid var(--color-highlight);
-      outline-offset: var(--spacing-extra-small);
+      outline-offset: 2px;
     }
   }
 `;

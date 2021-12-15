@@ -26,7 +26,7 @@ export const todoooAddButtonStyles = css`
   @media (hover: hover) {
     .add-button__button:hover {
       outline: 2px solid var(--color-highlight);
-      outline-offset: var(--spacing-extra-small);
+      outline-offset: 2px;
     }
   }
 `;

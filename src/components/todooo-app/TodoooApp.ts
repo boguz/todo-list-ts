@@ -8,13 +8,17 @@ import '../todooo-login/todooo-login.js';
 import '../todooo-main/todooo-main.js';
 
 export class TodoooApp extends LitElement {
+  @property({ type: Object }) state = {};
+
   @property({ type: Object }) user = {
     id: null,
     displayName: null,
     avatarURL: null,
   };
 
-  @property({ type: Object }) state = {};
+  @property({ type: Object }) userSettings = {
+    visible: false,
+  };
 
   static styles = css`
     :host {
@@ -33,16 +37,23 @@ export class TodoooApp extends LitElement {
     store.subscribe(() => {
       this._onStateChange(store.getState());
     });
+
+    this._onStateChange(store.getState());
   }
 
   _onStateChange(state: any) {
     this.user = state.user;
+    this.userSettings = state.userSettings;
+    console.log('STATE', state);
   }
 
   render() {
-    return html`<todooo-main .user="${this.user}"></todooo-main>`;
-    // return this.user.displayName
-    //   ? html`<todooo-main .user="${this.user}"></todooo-main>`
-    //   : html`<todooo-login></todooo-login>`;
+    // return html`<todooo-main .user="${this.user}" .userSettings="${this.userSettings}"></todooo-main>`;
+    return this.user.displayName
+      ? html`<todooo-main
+          .user="${this.user}"
+          .userSettings="${this.userSettings}"
+        ></todooo-main>`
+      : html`<todooo-login></todooo-login>`;
   }
 }

@@ -2,10 +2,7 @@ import { LitElement, html } from 'lit';
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
 import { todoooLoginStyles } from './todooo-login.styles.js';
-import { firebaseAuth } from '../../firestore/firestoreConfig.js';
-
-import { loginUser } from '../../store/slices/user.slice.js';
-import store from '../../store/store.js';
+import { firebaseAuth } from '../../firestore/firestoreAuth.js';
 
 export class TodoooLogin extends LitElement {
   static styles = [todoooSharedStyles, todoooLoginStyles];
@@ -25,22 +22,11 @@ export class TodoooLogin extends LitElement {
 
   async _onLoginButtonClick() {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(firebaseAuth, provider)
-      .then(result => {
-        const { user } = result;
-        const userData = {
-          displayName: user.displayName as string,
-          id: user.uid,
-          avatarURL: user.photoURL as string,
-        };
-        console.log('user in login click', userData);
-        store.dispatch(loginUser(userData));
-      })
-      .catch(error => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error(errorCode, errorMessage);
-      });
+    signInWithPopup(firebaseAuth, provider).catch(error => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error(errorCode, errorMessage);
+    });
   }
 }

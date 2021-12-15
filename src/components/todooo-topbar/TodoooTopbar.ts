@@ -1,11 +1,10 @@
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators.js';
-import { firebaseAuth } from '../../firestore/firestoreConfig.js';
-import { logoutUser } from '../../store/slices/user.slice.js';
 import store from '../../store/store.js';
 
 import { todoooTopbarStyles } from './todooo-topbar.styles.js';
 import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
+import { showUserSettings } from '../../store/slices/userSettings.slice.js';
 
 export class TodoooTopbar extends LitElement {
   @property({ type: Object }) user = {
@@ -39,17 +38,6 @@ export class TodoooTopbar extends LitElement {
   }
 
   _onAvatarClick() {
-    console.log('AVATAR CLICK');
-  }
-
-  _onLogoutClick() {
-    firebaseAuth.signOut().then(
-      () => {
-        store.dispatch(logoutUser());
-      },
-      error => {
-        console.error('Signout Failed', error);
-      }
-    );
+    store.dispatch(showUserSettings());
   }
 }
