@@ -19,5 +19,10 @@ export const todoooSharedVariables = css`
     --font-size-normal: 1rem;
     --font-size-small: 0.875rem;
     --font-size-bigger: 1.25rem;
+
+    /* TOPBAR */
+    --topbar-height: 64px;
+    --topbar-logo-height: 20px;
+    --topbar-avatar-size: 32px;
   }
 `;
