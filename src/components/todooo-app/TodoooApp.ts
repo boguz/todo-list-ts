@@ -2,14 +2,13 @@ import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
 
 import store from '../../store/store.js';
-
 import '../../firestore/firestore.js';
-import '../todooo-login/todooo-login.js';
 
-import { UserInterface } from '../../types.js';
+import '../todooo-login/todooo-login.js';
+import '../todooo-main/todooo-main.js';
 
 export class TodoooApp extends LitElement {
-  @property({ type: Object }) user: UserInterface = {
+  @property({ type: Object }) user = {
     id: null,
     displayName: null,
     avatarURL: null,
@@ -31,20 +30,18 @@ export class TodoooApp extends LitElement {
   constructor() {
     super();
 
-    store.subscribe(this._onStateChange);
+    store.subscribe(() => {
+      this._onStateChange(store.getState());
+    });
   }
 
-  _onStateChange() {
-    console.log('111111', store.getState());
-    const state = store.getState();
-    const { user } = state;
-    console.log('STATE', state);
-    console.log('USER', user);
+  _onStateChange(state: any) {
+    this.user = state.user;
   }
 
   render() {
     return this.user.displayName
-      ? html`<h1>HAS USER</h1>`
+      ? html`<todooo-main></todooo-main>`
       : html`<todooo-login></todooo-login>`;
   }
 }

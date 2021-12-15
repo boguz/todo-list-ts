@@ -7,8 +7,6 @@ import { firebaseAuth } from '../../firestore/firestoreConfig.js';
 import { loginUser } from '../../store/slices/user.slice.js';
 import store from '../../store/store.js';
 
-import { UserInterface } from '../../types.js';
-
 export class TodoooLogin extends LitElement {
   static styles = [todoooSharedStyles, todoooLoginStyles];
 
@@ -26,12 +24,11 @@ export class TodoooLogin extends LitElement {
   }
 
   async _onLoginButtonClick() {
-    console.log('aaaaaaaa');
     const provider = new GoogleAuthProvider();
     signInWithPopup(firebaseAuth, provider)
       .then(result => {
         const { user } = result;
-        const userData: UserInterface = {
+        const userData = {
           displayName: user.displayName as string,
           id: user.uid,
           avatarURL: user.photoURL as string,
