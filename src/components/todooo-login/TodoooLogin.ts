@@ -7,6 +7,8 @@ import { firebaseAuth } from '../../firestore/firestoreConfig.js';
 import { loginUser } from '../../store/slices/user.slice.js';
 import store from '../../store/store.js';
 
+import { UserInterface } from '../../types.js';
+
 export class TodoooLogin extends LitElement {
   static styles = [todoooSharedStyles, todoooLoginStyles];
 
@@ -29,12 +31,12 @@ export class TodoooLogin extends LitElement {
     signInWithPopup(firebaseAuth, provider)
       .then(result => {
         const { user } = result;
-        const userData = {
-          displayName: user.displayName,
+        const userData: UserInterface = {
+          displayName: user.displayName as string,
           id: user.uid,
-          avatarURL: user.photoURL,
+          avatarURL: user.photoURL as string,
         };
-        console.log('user', userData);
+        console.log('user in login click', userData);
         store.dispatch(loginUser(userData));
       })
       .catch(error => {

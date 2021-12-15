@@ -1,29 +1,23 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface User {
-  id: string;
-  displayName: string;
-  avatarURL: string;
-}
-
-const initialState: User | null = null;
+import { createSlice } from '@reduxjs/toolkit';
+// import { UserInterface } from "../../types.js";
 
 const user = createSlice({
   name: 'user',
-  initialState,
+  initialState: {
+    id: null,
+    displayName: null,
+    avatarURL: null,
+  },
   reducers: {
-    loginUser(state, action: PayloadAction<User>) {
-      const newUser: User = {
-        id: action.payload.id,
-        displayName: action.payload.displayName,
-        avatarURL: action.payload.avatarURL,
-      };
-      // @ts-ignore
-      state = newUser;
+    loginUser(state, action) {
+      state.id = action.payload.id;
+      state.displayName = action.payload.displayName;
+      state.avatarURL = action.payload.avatarURL;
     },
     logoutUser(state) {
-      // eslint-disable-next-line  @typescript-eslint/no-unused-vars
-      state = null;
+      state.id = null;
+      state.displayName = null;
+      state.avatarURL = null;
     },
   },
 });

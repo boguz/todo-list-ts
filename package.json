@@ -14,8 +14,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.0",
     "firebase": "^9.4.1",
-    "lit": "^2.0.0-rc.2",
-    "pwa-helpers": "^0.9.1"
+    "lit": "^2.0.0-rc.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.15.0",
@@ -54,7 +53,9 @@
     ],
     "rules": {
       "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": ["error"],
+      "@typescript-eslint/no-unused-vars": [
+        "error"
+      ],
       "import/no-unresolved": "off",
       "import/extensions": [
         "error",
