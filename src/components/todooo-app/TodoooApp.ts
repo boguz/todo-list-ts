@@ -40,8 +40,9 @@ export class TodoooApp extends LitElement {
   }
 
   render() {
-    return this.user.displayName
-      ? html`<todooo-main .user="${this.user}"></todooo-main>`
-      : html`<todooo-login></todooo-login>`;
+    return html`<todooo-main .user="${this.user}"></todooo-main>`;
+    // return this.user.displayName
+    //   ? html`<todooo-main .user="${this.user}"></todooo-main>`
+    //   : html`<todooo-login></todooo-login>`;
   }
 }

@@ -4,11 +4,12 @@ export const todoooTopbarStyles = css`
   :host {
     width: 100%;
     height: var(--topbar-height);
-    background-color: var(--color-bg-base);
+    background-color: var(--color-bg-surface);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 var(--spacing-normal);
+    border-bottom: 1px solid var(--color-highlight);
   }
 
   .topbar__logo {
@@ -38,7 +39,8 @@ export const todoooTopbarStyles = css`
 
   @media (hover: hover) {
     .topbar__avatar:hover {
-      outline: 1px solid var(--color-highlight);
+      outline: 2px solid var(--color-highlight);
+      outline-offset: var(--spacing-extra-small);
     }
   }
 `;

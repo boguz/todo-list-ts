@@ -19,10 +19,18 @@ export const todoooSharedVariables = css`
     --font-size-normal: 1rem;
     --font-size-small: 0.875rem;
     --font-size-bigger: 1.25rem;
+    --font-size-big: 2rem;
 
     /* TOPBAR */
-    --topbar-height: 64px;
-    --topbar-logo-height: 20px;
-    --topbar-avatar-size: 32px;
+    --topbar-height: 4rem;
+    --topbar-logo-height: 1.25rem;
+    --topbar-avatar-size: 2rem;
+
+    /* LOADER */
+    --loader-height: 0.25rem;
+    --loader-animation-duration: 1s;
+
+    /* ADD BUTTON */
+    --add-button-size: 2rem;
   }
 `;

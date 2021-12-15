@@ -1,12 +1,11 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html } from 'lit';
+import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
+import { todoooAddButtonStyles } from './todooo-add-button.styles.js';
 
 export class TodoooAddButton extends LitElement {
-  static styles = css`
-    :host {
-    }
-  `;
+  static styles = [todoooSharedStyles, todoooAddButtonStyles];
 
   render() {
-    return html` <button>ADD</button> `;
+    return html` <button class="add-button__button">+</button> `;
   }
 }
