@@ -5,6 +5,7 @@ import '../todooo-stage/todooo-stage.js';
 import '../todooo-add-button/todooo-add-button.js';
 import '../todooo-loader/todooo-loader.js';
 import '../todooo-user-settings/todooo-user-settings.js';
+import '../todooo-new-list/todooo-new-list.js';
 import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
 import { todoooMainStyles } from './todooo-main.styles.js';
 
@@ -26,7 +27,6 @@ export class TodoooMain extends LitElement {
   static styles = [todoooSharedStyles, todoooMainStyles];
 
   render() {
-    console.log('TTT', this.userSettings.visible);
     return html`
       <todooo-topbar
         .user="${this.user}"
@@ -34,11 +34,12 @@ export class TodoooMain extends LitElement {
       ></todooo-topbar>
       <todooo-loader></todooo-loader>
       <todooo-stage></todooo-stage>
-      <todooo-add-button></todooo-add-button>
+      <todooo-add-button .view="${this.view.viewName}"></todooo-add-button>
       <todooo-user-settings
         .user="${this.user}"
         ?visible="${this.userSettings.visible}"
       ></todooo-user-settings>
+      <todooo-new-list .user="${this.user}"></todooo-new-list>
     `;
   }
 }

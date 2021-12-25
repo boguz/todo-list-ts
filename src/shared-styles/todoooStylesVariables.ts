@@ -7,6 +7,7 @@ export const todoooSharedVariables = css`
     --color-text-primary: #f4f2ed;
     --color-text-secondary: #777779;
     --color-highlight: #f7d254;
+    --color-highlight-hover: #ffbe01;
 
     --spacing-normal: 1rem;
     --spacing-small: calc(var(--spacing-normal) / 2);

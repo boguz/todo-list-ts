@@ -13,8 +13,10 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.0",
+    "@types/uuid": "^8.3.3",
     "firebase": "^9.4.1",
-    "lit": "^2.0.0-rc.2"
+    "lit": "^2.0.0-rc.2",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.15.0",
@@ -66,7 +68,13 @@
       ],
       "class-methods-use-this": "off",
       "no-param-reassign": "off",
-      "no-unused-expressions": ["error", { "allowTernary": true }]
+      "no-undef": "warn",
+      "no-unused-expressions": [
+        "error",
+        {
+          "allowTernary": true
+        }
+      ]
     }
   },
   "prettier": {

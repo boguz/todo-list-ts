@@ -7,6 +7,7 @@ export const todoooAddButtonStyles = css`
     width: var(--add-button-size);
     bottom: var(--spacing-normal);
     right: var(--spacing-normal);
+    z-index: 2;
   }
 
   .add-button__button {
@@ -20,12 +21,14 @@ export const todoooAddButtonStyles = css`
     justify-content: center;
     border-radius: 50%;
     font-size: var(--font-size-big);
+    color: var(--color-bg-base);
     cursor: pointer;
   }
 
   @media (hover: hover) {
     .add-button__button:hover {
-      outline: 2px solid var(--color-highlight);
+      background-color: var(--color-highlight-hover);
+      outline: 2px solid var(--color-highlight-hover);
       outline-offset: 2px;
     }
   }
