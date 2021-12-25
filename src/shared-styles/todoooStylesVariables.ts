@@ -22,8 +22,12 @@ export const todoooSharedVariables = css`
     --font-family-text: 'Roboto', sans-serif;
     --font-size-normal: 1rem;
     --font-size-small: 0.875rem;
+    --font-size-smaller: 0.75rem;
     --font-size-bigger: 1.25rem;
     --font-size-big: 2rem;
+
+    /* ICONS */
+    --todooo-icon-chevron: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTcuNDEsOC41OEwxMiwxMy4xN0wxNi41OSw4LjU4TDE4LDEwTDEyLDE2TDYsMTBMNy40MSw4LjU4WiIgLz48L3N2Zz4=');
 
     /* TOPBAR */
     --topbar-height: 4rem;
@@ -36,5 +40,13 @@ export const todoooSharedVariables = css`
 
     /* ADD BUTTON */
     --add-button-size: 2rem;
+
+    /* LIST */
+    --list-chevron-size: 2rem;
+
+    /* LIST ITEM */
+    --list-item-progress-size: 2rem;
+    --list-item-progress-thickness: 3px;
+    --list-item-progress-percentage: 62;
   }
 `;

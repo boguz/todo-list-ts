@@ -4,7 +4,10 @@ import store from '../../store/store.js';
 
 import { todoooTopbarStyles } from './todooo-topbar.styles.js';
 import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
-import { showUserSettings } from '../../store/slices/userSettings.slice.js';
+import {
+  hideUserSettings,
+  showUserSettings,
+} from '../../store/slices/userSettings.slice.js';
 
 export class TodoooTopbar extends LitElement {
   @property({ type: Object }) user = {
@@ -38,6 +41,8 @@ export class TodoooTopbar extends LitElement {
   }
 
   _onAvatarClick() {
-    store.dispatch(showUserSettings());
+    this.hasAttribute('usersettingsvisible')
+      ? store.dispatch(hideUserSettings())
+      : store.dispatch(showUserSettings());
   }
 }

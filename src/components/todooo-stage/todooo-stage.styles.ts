@@ -6,7 +6,7 @@ export const todoooStageStyles = css`
     background-color: var(--color-bg-base);
     min-height: calc(100vh - var(--topbar-height));
     width: 100%;
-    padding: var(--spacing-normal);
+    padding: var(--spacing-large) var(--spacing-normal) var(--spacing-normal);
   }
 
   :host * {

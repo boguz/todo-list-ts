@@ -15,9 +15,12 @@ export class TodoooMain extends LitElement {
     avatarURL: null,
   };
 
-  @property({ type: Object })
-  userSettings = {
+  @property({ type: Object }) userSettings = {
     visible: false,
+  };
+
+  @property({ type: Object }) view = {
+    viewName: 'list',
   };
 
   static styles = [todoooSharedStyles, todoooMainStyles];

@@ -20,6 +20,10 @@ export class TodoooApp extends LitElement {
     visible: false,
   };
 
+  @property({ type: Object }) view = {
+    viewName: 'list',
+  };
+
   static styles = css`
     :host {
       min-height: 100vh;
@@ -44,6 +48,7 @@ export class TodoooApp extends LitElement {
   _onStateChange(state: any) {
     this.user = state.user;
     this.userSettings = state.userSettings;
+    this.view = state.view;
     console.log('STATE', state);
   }
 
@@ -53,6 +58,7 @@ export class TodoooApp extends LitElement {
       ? html`<todooo-main
           .user="${this.user}"
           .userSettings="${this.userSettings}"
+          .view="${this.view}"
         ></todooo-main>`
       : html`<todooo-login></todooo-login>`;
   }
