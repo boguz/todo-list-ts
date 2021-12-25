@@ -6,7 +6,7 @@ import { hideUserSettings } from '../store/slices/userSettings.slice.js';
 
 export const firebaseAuth = getAuth(firebaseApp);
 
-firebaseAuth.onAuthStateChanged(user => {
+firebaseAuth.onAuthStateChanged(async user => {
   if (user) {
     const userData = {
       displayName: user.displayName as string,
