@@ -8,8 +8,4 @@ export const todoooStageStyles = css`
     width: 100%;
     padding: var(--spacing-large) var(--spacing-normal) var(--spacing-normal);
   }
-
-  :host * {
-    margin: 0;
-  }
 `;

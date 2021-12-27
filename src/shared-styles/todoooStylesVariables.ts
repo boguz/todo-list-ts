@@ -49,5 +49,8 @@ export const todoooSharedVariables = css`
     --list-item-progress-size: 2rem;
     --list-item-progress-thickness: 3px;
     --list-item-progress-percentage: 62;
+
+    /* PROGRESS */
+    --progress-height: 6px;
   }
 `;
