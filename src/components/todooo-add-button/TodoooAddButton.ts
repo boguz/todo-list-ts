@@ -2,6 +2,8 @@ import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators.js';
 import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
 import { todoooAddButtonStyles } from './todooo-add-button.styles.js';
+import store from '../../store/store.js';
+import { showNewListForm } from '../../store/slices/lists.slice.js';
 
 export class TodoooAddButton extends LitElement {
   @property({ type: String }) view: String = 'list';
@@ -21,7 +23,7 @@ export class TodoooAddButton extends LitElement {
   }
 
   _showAddNewList() {
-    console.log('ADD NEW LIST');
+    store.dispatch(showNewListForm());
   }
 
   _showAddNewTodo() {

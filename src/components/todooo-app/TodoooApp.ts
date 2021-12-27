@@ -4,6 +4,8 @@ import { property } from 'lit/decorators.js';
 import store from '../../store/store.js';
 import '../../firestore/firestore.js';
 
+import { ListsInterface } from '../../types/interfaces.js';
+
 import '../todooo-login/todooo-login.js';
 import '../todooo-main/todooo-main.js';
 
@@ -22,6 +24,11 @@ export class TodoooApp extends LitElement {
 
   @property({ type: Object }) view = {
     viewName: 'list',
+  };
+
+  @property({ type: Object }) lists: ListsInterface = {
+    lists: [],
+    newListFormVisible: false,
   };
 
   static styles = css`
@@ -49,6 +56,7 @@ export class TodoooApp extends LitElement {
     this.user = state.user;
     this.userSettings = state.userSettings;
     this.view = state.view;
+    this.lists = state.lists;
     console.log('STATE', state);
   }
 
@@ -59,6 +67,7 @@ export class TodoooApp extends LitElement {
           .user="${this.user}"
           .userSettings="${this.userSettings}"
           .view="${this.view}"
+          .lists="${this.lists}"
         ></todooo-main>`
       : html`<todooo-login></todooo-login>`;
   }

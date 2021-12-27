@@ -8,6 +8,7 @@ import '../todooo-user-settings/todooo-user-settings.js';
 import '../todooo-new-list/todooo-new-list.js';
 import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
 import { todoooMainStyles } from './todooo-main.styles.js';
+import { ListsInterface } from '../../types/interfaces.js';
 
 export class TodoooMain extends LitElement {
   @property({ type: Object }) user = {
@@ -24,9 +25,15 @@ export class TodoooMain extends LitElement {
     viewName: 'list',
   };
 
+  @property({ type: Object }) lists: ListsInterface = {
+    lists: [],
+    newListFormVisible: false,
+  };
+
   static styles = [todoooSharedStyles, todoooMainStyles];
 
   render() {
+    console.log('1111', this.lists.newListFormVisible);
     return html`
       <todooo-topbar
         .user="${this.user}"
@@ -39,7 +46,9 @@ export class TodoooMain extends LitElement {
         .user="${this.user}"
         ?visible="${this.userSettings.visible}"
       ></todooo-user-settings>
-      <todooo-new-list .user="${this.user}"></todooo-new-list>
+      ${this.lists.newListFormVisible
+        ? html` <todooo-new-list .user="${this.user}"></todooo-new-list> `
+        : ''}
     `;
   }
 }

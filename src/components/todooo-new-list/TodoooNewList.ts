@@ -1,6 +1,10 @@
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators.js';
 import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
+import { createNewList } from '../../utils/createNewList.js';
+import { addListToUser } from '../../firestore/firestoreUpdateUserLists.js';
+import store from '../../store/store.js';
+import { hideNewListForm } from '../../store/slices/lists.slice.js';
 
 export class TodoooNewList extends LitElement {
   @property({ type: Object }) user = {
@@ -27,16 +31,22 @@ export class TodoooNewList extends LitElement {
     console.log('SCRIM CLICK');
   }
 
-  _onNewListFormSubmit(event: SubmitEvent) {
+  async _onNewListFormSubmit(event: SubmitEvent) {
     event.preventDefault();
     // @ts-ignore
     const newListName = this.shadowRoot.querySelector('.form__input').value;
-    if (newListName) {
-      console.log({
-        name: newListName,
-        authorId: this.user.id,
-        authorName: this.user.displayName,
-      });
+    if (newListName && this.user.id && this.user.displayName) {
+      const newList = createNewList(
+        newListName,
+        this.user.id,
+        this.user.displayName
+      );
+      try {
+        await addListToUser(newList);
+        store.dispatch(hideNewListForm());
+      } catch (error) {
+        console.error('Could not create list', error);
+      }
     }
   }
 }
