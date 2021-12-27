@@ -33,14 +33,13 @@ export class TodoooMain extends LitElement {
   static styles = [todoooSharedStyles, todoooMainStyles];
 
   render() {
-    console.log('1111', this.lists.newListFormVisible);
     return html`
       <todooo-topbar
         .user="${this.user}"
         ?userSettingsVisible="${this.userSettings.visible}"
       ></todooo-topbar>
       <todooo-loader></todooo-loader>
-      <todooo-stage></todooo-stage>
+      <todooo-stage .lists="${this.lists.lists}"></todooo-stage>
       <todooo-add-button .view="${this.view.viewName}"></todooo-add-button>
       <todooo-user-settings
         .user="${this.user}"

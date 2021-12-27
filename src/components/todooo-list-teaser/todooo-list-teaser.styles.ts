@@ -1,6 +1,6 @@
 import { css } from 'lit';
 
-export const todoooListItemStyles = css`
+export const todoooListTeaserStyles = css`
   :host {
     position: relative;
     display: grid;

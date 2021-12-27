@@ -1,6 +1,6 @@
 import { css } from 'lit';
 
-export const todoooListStyles = css`
+export const todoooListTeaserGroupStyles = css`
   :host {
     margin: 0;
     padding: 0;

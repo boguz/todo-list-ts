@@ -1,21 +1,21 @@
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators.js';
 import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
-import { todoooListStyles } from './todooo-list.styles.js';
 import { getRandomItemFromArray } from '../../utils/utils.js';
 
-import '../todooo-list-item/todooo-list-item.js';
+import '../todooo-list-teaser/todooo-list-teaser.js';
 
 import { emptyListMessages } from '../../utils/emptyListMessages.js';
+import { todoooListTeaserGroupStyles } from './todooo-list-teaser-group.styles.js';
 
-export class TodoooList extends LitElement {
+export class TodoooListTeaserGroup extends LitElement {
   @property({ type: Boolean, reflect: true }) collapsed = false;
 
   @property({ type: String }) title = '';
 
-  @property({ type: Array }) listItems = [];
+  @property({ type: Array }) lists = [];
 
-  static styles = [todoooSharedStyles, todoooListStyles];
+  static styles = [todoooSharedStyles, todoooListTeaserGroupStyles];
 
   render() {
     return html`
@@ -28,12 +28,11 @@ export class TodoooList extends LitElement {
         <span class="header__chevron"></span>
       </div>
       <div class="list">
-        ${this.listItems.length > 0
-          ? html`
-              <todooo-list-item></todooo-list-item>
-              <todooo-list-item></todooo-list-item>
-              <todooo-list-item></todooo-list-item>
-            `
+        ${this.lists.length > 0
+          ? this.lists.map(
+              list =>
+                html`<todooo-list-teaser .list="${list}"></todooo-list-teaser>`
+            )
           : html`
               <p class="no-items">
                 ${getRandomItemFromArray(emptyListMessages)}
