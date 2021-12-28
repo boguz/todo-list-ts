@@ -2,11 +2,9 @@ import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators.js';
 import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
 import { getRandomItemFromArray } from '../../utils/utils.js';
-
-import '../todooo-list-teaser/todooo-list-teaser.js';
-
 import { emptyListMessages } from '../../utils/emptyListMessages.js';
 import { todoooListTeaserGroupStyles } from './todooo-list-teaser-group.styles.js';
+import '../todooo-list-teaser/todooo-list-teaser.js';
 
 export class TodoooListTeaserGroup extends LitElement {
   @property({ type: Boolean, reflect: true }) collapsed = false;

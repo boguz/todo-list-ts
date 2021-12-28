@@ -1,11 +1,8 @@
 import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
-
 import store from '../../store/store.js';
 import '../../firestore/firestore.js';
-
 import { ListsInterface } from '../../types/interfaces.js';
-
 import '../todooo-login/todooo-login.js';
 import '../todooo-main/todooo-main.js';
 

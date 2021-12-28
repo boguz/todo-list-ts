@@ -3,7 +3,6 @@ import { property } from 'lit/decorators.js';
 import { ListInterface } from '../../types/interfaces.js';
 import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
 import { todoooStageStyles } from './todooo-stage.styles.js';
-
 import '../todooo-progress/todooo-progress.js';
 import '../todooo-list-teaser-group/todooo-list-teaser-group.js';
 import '../todooo-list/todooo-list.js';

@@ -1,6 +1,5 @@
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators.js';
-
 import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
 import { todoooTodoStyles } from './todooo-todo.styles.js';
 

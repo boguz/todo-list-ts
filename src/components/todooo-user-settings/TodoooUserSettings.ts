@@ -4,7 +4,6 @@ import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
 import { todoooUserSettingsStyles } from './todooo-user-settings.styles.js';
 import store from '../../store/store.js';
 import { hideUserSettings } from '../../store/slices/userSettings.slice.js';
-
 import '../todooo-scrim/todooo-scrim.js';
 import { firebaseAuth } from '../../firestore/firestoreAuth.js';
 
