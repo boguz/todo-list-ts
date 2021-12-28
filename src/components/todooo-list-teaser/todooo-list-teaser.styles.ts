@@ -17,6 +17,10 @@ export const todoooListTeaserStyles = css`
     border: 1px solid var(--color-bg-base);
   }
 
+  :host([other-list-teaser]) {
+    opacity: 0.25;
+  }
+
   .content__title {
     margin: 0;
     color: var(--color-text-primary);

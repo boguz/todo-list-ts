@@ -1,17 +1,6 @@
 import { css } from 'lit';
 
-export const todoooListTeaserGroupStyles = css`
-  :host {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    display: block;
-  }
-
-  :host(:not(:last-child)) {
-    margin-bottom: var(--spacing-large) !important;
-  }
-
+export const todoooListStyles = css`
   .header {
     display: grid;
     grid-template-columns: 1fr var(--list-chevron-size);
@@ -47,21 +36,12 @@ export const todoooListTeaserGroupStyles = css`
     transform: rotate(-180deg);
   }
 
-  .list {
+  .todos {
     overflow: hidden;
-    max-height: 1000px;
-    // transition: max-height var(--transition-speed) ease-in-out;
   }
 
-  :host([collapsed]) .list {
+  :host([collapsed]) .todos {
     max-height: 0;
-  }
-
-  .no-items {
-    color: var(--color-text-secondary);
-    margin: 0;
-    opacity: 0.35;
-    font-size: var(--font-size-small);
   }
 
   @media (hover: hover) {

@@ -3,17 +3,21 @@ import { createSlice } from '@reduxjs/toolkit';
 const view = createSlice({
   name: 'view',
   initialState: {
-    viewName: 'list',
-    viewTodoId: null,
+    viewName: 'main',
+    viewListId: null,
   },
   reducers: {
-    setViewList(state) {
+    setViewMain(state) {
+      state.viewName = 'main';
+      state.viewListId = null;
+    },
+    setViewList(state, action) {
       state.viewName = 'list';
-      state.viewTodoId = null;
+      state.viewListId = action.payload;
     },
   },
 });
 
-export const { setViewList } = view.actions;
+export const { setViewMain, setViewList } = view.actions;
 
 export default view.reducer;

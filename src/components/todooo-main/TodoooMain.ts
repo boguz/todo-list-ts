@@ -6,6 +6,7 @@ import '../todooo-add-button/todooo-add-button.js';
 import '../todooo-loader/todooo-loader.js';
 import '../todooo-user-settings/todooo-user-settings.js';
 import '../todooo-new-list/todooo-new-list.js';
+import '../todooo-new-todo/todooo-new-todo.js';
 import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
 import { todoooMainStyles } from './todooo-main.styles.js';
 import { ListsInterface } from '../../types/interfaces.js';
@@ -22,12 +23,14 @@ export class TodoooMain extends LitElement {
   };
 
   @property({ type: Object }) view = {
-    viewName: 'list',
+    viewName: 'main',
+    viewListId: null,
   };
 
   @property({ type: Object }) lists: ListsInterface = {
     lists: [],
     newListFormVisible: false,
+    newTodoFormVisible: false,
   };
 
   static styles = [todoooSharedStyles, todoooMainStyles];
@@ -39,7 +42,10 @@ export class TodoooMain extends LitElement {
         ?userSettingsVisible="${this.userSettings.visible}"
       ></todooo-topbar>
       <todooo-loader></todooo-loader>
-      <todooo-stage .lists="${this.lists.lists}"></todooo-stage>
+      <todooo-stage
+        .lists="${this.lists.lists}"
+        .view="${this.view}"
+      ></todooo-stage>
       <todooo-add-button .view="${this.view.viewName}"></todooo-add-button>
       <todooo-user-settings
         .user="${this.user}"
@@ -47,6 +53,9 @@ export class TodoooMain extends LitElement {
       ></todooo-user-settings>
       ${this.lists.newListFormVisible
         ? html` <todooo-new-list .user="${this.user}"></todooo-new-list> `
+        : ''}
+      ${this.lists.newTodoFormVisible
+        ? html` <todooo-new-todo .user="${this.user}"></todooo-new-todo> `
         : ''}
     `;
   }

@@ -5,7 +5,7 @@ import store from '../store/store.js';
 import { loginUser, logoutUser } from '../store/slices/user.slice.js';
 import { hideUserSettings } from '../store/slices/userSettings.slice.js';
 import { setUserLists } from '../store/slices/lists.slice';
-import { setViewList } from '../store/slices/view.slice';
+import { setViewMain } from '../store/slices/view.slice';
 
 export const firebaseAuth = getAuth(firebaseApp);
 
@@ -17,7 +17,7 @@ firebaseAuth.onAuthStateChanged(async user => {
       avatarURL: user.photoURL as string,
     };
     store.dispatch(loginUser(userData));
-    store.dispatch(setViewList());
+    store.dispatch(setViewMain());
     onSnapshot(doc(firestoreDB, 'users', userData.id), document => {
       store.dispatch(setUserLists(document.data()?.lists));
     });

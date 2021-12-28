@@ -4,15 +4,14 @@ import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
 import { todoooListTeaserStyles } from './todooo-list-teaser.styles.js';
 import { ListInterface } from '../../types/interfaces.js';
 import { calculatePercentage } from '../../utils/utils.js';
+import store from '../../store/store.js';
+import { setViewList } from '../../store/slices/view.slice.js';
 
 export class TodoooListTeaser extends LitElement {
   @property({ type: Object }) list: ListInterface = {
-    authorId: '',
-    authorName: '',
-    creationDate: 0,
-    id: '',
-    items: [],
-    name: '',
+    id: null,
+    todos: null,
+    name: null,
   };
 
   @property({ type: Number }) percentage = 0;
@@ -20,7 +19,7 @@ export class TodoooListTeaser extends LitElement {
   static styles = [todoooSharedStyles, todoooListTeaserStyles];
 
   get amountOfCheckedItems() {
-    return this.list.items.filter(item => item.checked === false).length;
+    return this.list.todos!.filter(todo => todo.checked === false).length;
   }
 
   connectedCallback() {
@@ -28,19 +27,30 @@ export class TodoooListTeaser extends LitElement {
 
     this.percentage = calculatePercentage(
       this.amountOfCheckedItems,
-      this.list.items.length
+      this.list.todos!.length
     );
     this.style.setProperty(
       '--list-item-progress-percentage',
       this.percentage.toString()
     );
+
+    this.addEventListener('click', this._onTeaserClick);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeEventListener('click', this._onTeaserClick);
+  }
+
+  _onTeaserClick() {
+    store.dispatch(setViewList(this.list.id));
   }
 
   render() {
     return html`
       <div class="content">
         <h3 class="content__title">${this.list.name}</h3>
-        <p class="content__amount">${this.list.items.length} items</p>
+        <p class="content__amount">${this.list.todos!.length} items</p>
       </div>
       <div class="progress">
         <span class="progress__percentage">${this.percentage}</span>

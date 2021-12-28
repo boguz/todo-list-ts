@@ -2,7 +2,7 @@ import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators.js';
 import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
 import { createNewList } from '../../utils/createNewList.js';
-import { addListToUser } from '../../firestore/firestoreUpdateUserLists.js';
+import { firestoreAddList } from '../../firestore/firestoreAddList.js';
 import store from '../../store/store.js';
 import { hideNewListForm } from '../../store/slices/lists.slice.js';
 
@@ -35,14 +35,10 @@ export class TodoooNewList extends LitElement {
     event.preventDefault();
     // @ts-ignore
     const newListName = this.shadowRoot.querySelector('.form__input').value;
-    if (newListName && this.user.id && this.user.displayName) {
-      const newList = createNewList(
-        newListName,
-        this.user.id,
-        this.user.displayName
-      );
+    if (newListName) {
+      const newList = createNewList(newListName);
       try {
-        await addListToUser(newList);
+        await firestoreAddList(newList);
         store.dispatch(hideNewListForm());
       } catch (error) {
         console.error('Could not create list', error);

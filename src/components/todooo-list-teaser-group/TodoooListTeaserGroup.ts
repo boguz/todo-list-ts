@@ -17,6 +17,14 @@ export class TodoooListTeaserGroup extends LitElement {
 
   static styles = [todoooSharedStyles, todoooListTeaserGroupStyles];
 
+  private _isInsideOtherListGroup: boolean;
+
+  constructor() {
+    super();
+
+    this._isInsideOtherListGroup = this.hasAttribute('other-list-group');
+  }
+
   render() {
     return html`
       <div
@@ -31,7 +39,10 @@ export class TodoooListTeaserGroup extends LitElement {
         ${this.lists.length > 0
           ? this.lists.map(
               list =>
-                html`<todooo-list-teaser .list="${list}"></todooo-list-teaser>`
+                html`<todooo-list-teaser
+                  .list="${list}"
+                  ?other-list-teaser="${!!this._isInsideOtherListGroup}"
+                ></todooo-list-teaser>`
             )
           : html`
               <p class="no-items">

@@ -15,6 +15,7 @@ export const todoooTopbarStyles = css`
   .topbar__logo {
     width: auto;
     height: var(--topbar-logo-height);
+    cursor: pointer;
   }
 
   .topbar__avatar {
@@ -42,6 +43,10 @@ export const todoooTopbarStyles = css`
   }
 
   @media (hover: hover) {
+    .topbar__logo:hover {
+      opacity: 0.75;
+    }
+
     .topbar__avatar:hover {
       outline: 2px solid var(--color-highlight);
       outline-offset: 2px;

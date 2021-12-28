@@ -8,6 +8,7 @@ import {
   hideUserSettings,
   showUserSettings,
 } from '../../store/slices/userSettings.slice.js';
+import { setViewMain } from '../../store/slices/view.slice.js';
 
 export class TodoooTopbar extends LitElement {
   @property({ type: Object }) user = {
@@ -24,6 +25,8 @@ export class TodoooTopbar extends LitElement {
         src="./assets/images/logo-grey.svg"
         alt="Todooo app logo"
         class="topbar__logo"
+        @click="${this._onLogoClick}"
+        @keydown="${this._onHeaderKeyDown}"
       />
       <button class="topbar__avatar" @click="${this._onAvatarClick}">
         ${this.user.avatarURL
@@ -40,9 +43,19 @@ export class TodoooTopbar extends LitElement {
     `;
   }
 
+  _onLogoClick() {
+    store.dispatch(setViewMain());
+  }
+
   _onAvatarClick() {
     this.hasAttribute('usersettingsvisible')
       ? store.dispatch(hideUserSettings())
       : store.dispatch(showUserSettings());
+  }
+
+  _onHeaderKeyDown(event: KeyboardEvent) {
+    if (event.code === 'Enter') {
+      this._onLogoClick();
+    }
   }
 }

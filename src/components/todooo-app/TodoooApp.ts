@@ -23,12 +23,13 @@ export class TodoooApp extends LitElement {
   };
 
   @property({ type: Object }) view = {
-    viewName: 'list',
+    viewName: 'main',
   };
 
   @property({ type: Object }) lists: ListsInterface = {
     lists: [],
     newListFormVisible: false,
+    newTodoFormVisible: false,
   };
 
   static styles = css`
@@ -57,11 +58,9 @@ export class TodoooApp extends LitElement {
     this.userSettings = state.userSettings;
     this.view = state.view;
     this.lists = state.lists;
-    console.log('STATE', state);
   }
 
   render() {
-    // return html`<todooo-main .user="${this.user}" .userSettings="${this.userSettings}"></todooo-main>`;
     return this.user.displayName
       ? html`<todooo-main
           .user="${this.user}"
