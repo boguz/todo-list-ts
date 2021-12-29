@@ -14,6 +14,12 @@ export class TodoooTodo extends LitElement {
 
   static styles = [...todoooSharedStyles, todoooTodoStyles];
 
+  constructor() {
+    super();
+
+    this._confirmTodoDelete = this._confirmTodoDelete.bind(this);
+  }
+
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener('click', this._onClickEvent);
@@ -41,12 +47,26 @@ export class TodoooTodo extends LitElement {
     `;
   }
 
-  _onDeleteButtonClick(event: MouseEvent) {
-    event.stopPropagation();
-    if (
-      window.confirm(`Do you really want to delete todo "${this.todo.name}"?`)
-    ) {
-      firestoreDeleteTodo(this.todo.id);
-    }
+  _onDeleteButtonClick() {
+    this.dispatchEvent(
+      new CustomEvent('todooo-dialog-show', {
+        bubbles: true,
+        composed: true,
+        detail: {
+          question: `Do you really want to delete the "${this.todo.name}" todo?`,
+          confirmCallback: this._confirmTodoDelete,
+        },
+      })
+    );
+  }
+
+  async _confirmTodoDelete() {
+    await firestoreDeleteTodo(this.todo.id);
+    this.dispatchEvent(
+      new CustomEvent('todooo-dialog-hide', {
+        bubbles: true,
+        composed: true,
+      })
+    );
   }
 }

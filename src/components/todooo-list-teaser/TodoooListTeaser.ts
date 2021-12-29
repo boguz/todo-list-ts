@@ -26,7 +26,7 @@ export class TodoooListTeaser extends LitElement {
   constructor() {
     super();
 
-    this._confirmDelete = this._confirmDelete.bind(this);
+    this._confirmListDelete = this._confirmListDelete.bind(this);
   }
 
   connectedCallback() {
@@ -74,14 +74,14 @@ export class TodoooListTeaser extends LitElement {
         composed: true,
         detail: {
           question: `Do you really want to delete the "${this.list.name}" list?`,
-          confirmCallback: this._confirmDelete,
+          confirmCallback: this._confirmListDelete,
         },
       })
     );
   }
 
-  _confirmDelete() {
-    firestoreDeleteList(this.list.id);
+  async _confirmListDelete() {
+    await firestoreDeleteList(this.list.id);
     this.dispatchEvent(
       new CustomEvent('todooo-dialog-hide', {
         bubbles: true,
