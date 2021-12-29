@@ -7,6 +7,7 @@ import '../todooo-loader/todooo-loader.js';
 import '../todooo-user-settings/todooo-user-settings.js';
 import '../todooo-new-list/todooo-new-list.js';
 import '../todooo-new-todo/todooo-new-todo.js';
+import '../todooo-dialog/todooo-dialog.js';
 import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
 import { todoooMainStyles } from './todooo-main.styles.js';
 import { ListsInterface } from '../../types/interfaces.js';
@@ -60,6 +61,7 @@ export class TodoooMain extends LitElement {
       ${this.lists.newTodoFormVisible
         ? html` <todooo-new-todo .user="${this.user}"></todooo-new-todo> `
         : ''}
+      <todooo-dialog></todooo-dialog>
     `;
   }
 }

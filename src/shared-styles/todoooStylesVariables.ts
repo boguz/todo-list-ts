@@ -17,6 +17,8 @@ export const todoooSharedVariables = css`
     --spacing-large: calc(var(--spacing-normal) * 2);
     --spacing-extra-large: calc(var(--spacing-normal) * 4);
 
+    --line-height: 1.4;
+
     --transition-speed: 0.25s;
 
     --border-radius-normal: 0.125rem;

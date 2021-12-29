@@ -24,3 +24,7 @@ export interface ListsInterface {
   newListFormVisible: boolean;
   newTodoFormVisible: boolean;
 }
+
+export interface CallbackInterface {
+  (): void;
+}

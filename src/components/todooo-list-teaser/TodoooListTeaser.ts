@@ -23,6 +23,12 @@ export class TodoooListTeaser extends LitElement {
     return this.list.todos!.filter(todo => todo.checked === false).length;
   }
 
+  constructor() {
+    super();
+
+    this._confirmDelete = this._confirmDelete.bind(this);
+  }
+
   connectedCallback() {
     super.connectedCallback();
 
@@ -62,10 +68,25 @@ export class TodoooListTeaser extends LitElement {
 
   _onDeleteClick(event: MouseEvent) {
     event.stopPropagation();
-    if (
-      window.confirm(`Do you really want to delete list "${this.list.name}"?`)
-    ) {
-      firestoreDeleteList(this.list.id);
-    }
+    this.dispatchEvent(
+      new CustomEvent('todooo-dialog-show', {
+        bubbles: true,
+        composed: true,
+        detail: {
+          question: `Do you really want to delete the "${this.list.name}" list?`,
+          confirmCallback: this._confirmDelete,
+        },
+      })
+    );
+  }
+
+  _confirmDelete() {
+    firestoreDeleteList(this.list.id);
+    this.dispatchEvent(
+      new CustomEvent('todooo-dialog-hide', {
+        bubbles: true,
+        composed: true,
+      })
+    );
   }
 }
