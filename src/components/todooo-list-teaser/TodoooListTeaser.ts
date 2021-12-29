@@ -6,6 +6,7 @@ import { ListInterface } from '../../types/interfaces.js';
 import { calculatePercentage } from '../../utils/utils.js';
 import store from '../../store/store.js';
 import { setViewList } from '../../store/slices/view.slice.js';
+import { firestoreDeleteList } from '../../firestore/firestoreDeleteList.js';
 
 export class TodoooListTeaser extends LitElement {
   @property({ type: Object }) list: ListInterface = {
@@ -42,10 +43,6 @@ export class TodoooListTeaser extends LitElement {
     this.removeEventListener('click', this._onTeaserClick);
   }
 
-  _onTeaserClick() {
-    store.dispatch(setViewList(this.list.id));
-  }
-
   render() {
     return html`
       <div class="content">
@@ -55,6 +52,20 @@ export class TodoooListTeaser extends LitElement {
       <div class="progress">
         <span class="progress__percentage">${this.percentage}</span>
       </div>
+      <button class="delete" @click="${this._onDeleteClick}"></button>
     `;
+  }
+
+  _onTeaserClick() {
+    store.dispatch(setViewList(this.list.id));
+  }
+
+  _onDeleteClick(event: MouseEvent) {
+    event.stopPropagation();
+    if (
+      window.confirm(`Do you really want to delete list "${this.list.name}"?`)
+    ) {
+      firestoreDeleteList(this.list.id);
+    }
   }
 }
