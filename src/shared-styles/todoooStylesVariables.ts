@@ -58,7 +58,8 @@ export const todoooSharedVariables = css`
     /* PROGRESS */
     --progress-height: 6px;
 
-    /* TODOELELEMENT */
+    /* TODOS */
     --todo-checkbox-size: 1rem;
+    --todo-delete-button-size: 1.25rem;
   }
 `;

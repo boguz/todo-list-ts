@@ -2,6 +2,7 @@ import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators.js';
 import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
 import { todoooTodoStyles } from './todooo-todo.styles.js';
+import { firestoreDeleteTodo } from '../../firestore/firestoreDeleteTodo.js';
 
 export class TodoooTodo extends LitElement {
   @property({ type: Object }) todo = {
@@ -35,6 +36,16 @@ export class TodoooTodo extends LitElement {
         ?checked="${this.todo.checked}"
       />
       <p class="name">${this.todo.name}</p>
+      <button class="delete" @click="${this._onDeleteButtonClick}"></button>
     `;
+  }
+
+  _onDeleteButtonClick(event: MouseEvent) {
+    event.stopPropagation();
+    if (
+      window.confirm(`Do you really want to delete todo "${this.todo.name}"?`)
+    ) {
+      firestoreDeleteTodo(this.todo.id);
+    }
   }
 }

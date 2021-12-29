@@ -115,8 +115,12 @@ export const todoooListTeaserStyles = css`
       border: 1px solid var(--color-highlight);
     }
 
-    :host(:hover) .content__title {
-      color: var(--color-highlight);
+    :host(:hover) {
+      border: 1px solid var(--color-highlight);
+    }
+
+    :host([other-list-teaser]:hover) {
+      opacity: 1;
     }
 
     :host(:hover) .progress {
