@@ -7,6 +7,7 @@ import {
   showNewListForm,
   showNewTodoForm,
 } from '../../store/slices/lists.slice.js';
+import { hideUserSettings } from '../../store/slices/userSettings.slice';
 
 export class TodoooAddButton extends LitElement {
   @property({ type: String }) view: String = 'list';
@@ -22,6 +23,8 @@ export class TodoooAddButton extends LitElement {
   }
 
   _onButtonClick() {
+    store.dispatch(hideUserSettings());
+
     switch (this.view) {
       case 'main':
         this._showAddNewList();

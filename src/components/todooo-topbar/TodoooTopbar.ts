@@ -8,6 +8,7 @@ import {
   showUserSettings,
 } from '../../store/slices/userSettings.slice.js';
 import { setViewMain } from '../../store/slices/view.slice.js';
+import { hideAllFormOverlays } from '../../store/slices/lists.slice.js';
 
 export class TodoooTopbar extends LitElement {
   @property({ type: Object }) user = {
@@ -44,12 +45,16 @@ export class TodoooTopbar extends LitElement {
 
   _onLogoClick() {
     store.dispatch(setViewMain());
+    store.dispatch(hideAllFormOverlays());
   }
 
   _onAvatarClick() {
-    this.hasAttribute('usersettingsvisible')
-      ? store.dispatch(hideUserSettings())
-      : store.dispatch(showUserSettings());
+    if (this.hasAttribute('usersettingsvisible')) {
+      store.dispatch(hideUserSettings());
+    } else {
+      store.dispatch(showUserSettings());
+      store.dispatch(hideAllFormOverlays());
+    }
   }
 
   _onHeaderKeyDown(event: KeyboardEvent) {

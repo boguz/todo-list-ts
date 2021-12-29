@@ -72,7 +72,7 @@ export const todoooListTeaserStyles = css`
   .progress__percentage {
     font-size: var(--font-size-smaller);
     color: var(--color-text-secondary);
-    z-index: 1;
+    z-index: 0;
   }
 
   .progress__percentage::after {

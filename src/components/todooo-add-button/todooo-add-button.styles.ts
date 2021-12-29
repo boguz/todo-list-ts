@@ -10,6 +10,10 @@ export const todoooAddButtonStyles = css`
     z-index: 2;
   }
 
+  :host([userSettingsVisible]) {
+    z-index: 0;
+  }
+
   .add-button__button {
     height: var(--add-button-size);
     width: var(--add-button-size);

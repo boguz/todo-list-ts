@@ -46,7 +46,10 @@ export class TodoooMain extends LitElement {
         .lists="${this.lists.lists}"
         .view="${this.view}"
       ></todooo-stage>
-      <todooo-add-button .view="${this.view.viewName}"></todooo-add-button>
+      <todooo-add-button
+        .view="${this.view.viewName}"
+        ?userSettingsVisible="${this.userSettings.visible}"
+      ></todooo-add-button>
       <todooo-user-settings
         .user="${this.user}"
         ?visible="${this.userSettings.visible}"

@@ -28,7 +28,7 @@ export class TodoooNewList extends LitElement {
   }
 
   _onScrimClick() {
-    console.log('SCRIM CLICK');
+    store.dispatch(hideNewListForm());
   }
 
   async _onNewListFormSubmit(event: SubmitEvent) {

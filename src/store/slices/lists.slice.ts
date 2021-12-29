@@ -23,6 +23,10 @@ const lists = createSlice({
     hideNewTodoForm(state) {
       state.newTodoFormVisible = false;
     },
+    hideAllFormOverlays(state) {
+      state.newListFormVisible = false;
+      state.newTodoFormVisible = false;
+    },
   },
 });
 
@@ -32,6 +36,7 @@ export const {
   hideNewListForm,
   showNewTodoForm,
   hideNewTodoForm,
+  hideAllFormOverlays,
 } = lists.actions;
 
 export default lists.reducer;
