@@ -3,6 +3,7 @@ import { property } from 'lit/decorators.js';
 import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
 import { todoooTodoStyles } from './todooo-todo.styles.js';
 import { firestoreDeleteTodo } from '../../firestore/firestoreDeleteTodo.js';
+import { firestoreToggleTodo } from '../../firestore/firestoreToggleTodo.js';
 
 export class TodoooTodo extends LitElement {
   @property({ type: Object }) todo = {
@@ -24,7 +25,7 @@ export class TodoooTodo extends LitElement {
   }
 
   _onClickEvent() {
-    console.log('CLICK');
+    firestoreToggleTodo(this.todo.id);
   }
 
   render() {
