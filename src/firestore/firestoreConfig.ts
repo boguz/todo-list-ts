@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, enableIndexedDbPersistence } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBu4KlTbVc1XeynaPZQPL9FZVMaSxC51I8',
@@ -15,3 +15,8 @@ export const firebaseApp = initializeApp(firebaseConfig);
 
 // Firestore DB
 export const firestoreDB = getFirestore();
+
+// DB Persistence
+enableIndexedDbPersistence(firestoreDB).catch(error => {
+  console.error('Could not persist data!', error);
+});

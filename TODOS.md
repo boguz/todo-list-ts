@@ -1,2 +1,1 @@
 # TODOS
-- [ ] Offline support

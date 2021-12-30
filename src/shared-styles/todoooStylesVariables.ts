@@ -23,6 +23,8 @@ export const todoooSharedVariables = css`
 
     --border-radius-normal: 0.125rem;
 
+    --stage-max-width: 640px;
+
     --font-family-headline: 'Montserrat', sans-serif;
     --font-family-text: 'Roboto', sans-serif;
     --font-size-normal: 1rem;
