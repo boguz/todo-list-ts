@@ -84,13 +84,12 @@ export class TodoooListTeaser extends LitElement {
 
   async _confirmListDelete() {
     store.dispatch(startListsLoading());
-    await firestoreDeleteList(this.list.id);
-
     this.dispatchEvent(
       new CustomEvent('todooo-dialog-hide', {
         bubbles: true,
         composed: true,
       })
     );
+    await firestoreDeleteList(this.list.id);
   }
 }
