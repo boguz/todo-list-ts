@@ -5,6 +5,7 @@ const view = createSlice({
   initialState: {
     viewName: 'main',
     viewListId: null,
+    isLoading: false,
   },
   reducers: {
     setViewMain(state) {
@@ -15,9 +16,16 @@ const view = createSlice({
       state.viewName = 'list';
       state.viewListId = action.payload;
     },
+    startViewLoading(state) {
+      state.isLoading = true;
+    },
+    endViewLoading(state) {
+      state.isLoading = false;
+    },
   },
 });
 
-export const { setViewMain, setViewList } = view.actions;
+export const { setViewMain, setViewList, startViewLoading, endViewLoading } =
+  view.actions;
 
 export default view.reducer;

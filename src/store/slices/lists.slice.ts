@@ -6,6 +6,7 @@ const lists = createSlice({
     lists: [],
     newListFormVisible: false,
     newTodoFormVisible: false,
+    isLoading: false,
   },
   reducers: {
     setUserLists(state, action) {
@@ -27,6 +28,12 @@ const lists = createSlice({
       state.newListFormVisible = false;
       state.newTodoFormVisible = false;
     },
+    startListsLoading(state) {
+      state.isLoading = true;
+    },
+    endListsLoading(state) {
+      state.isLoading = false;
+    },
   },
 });
 
@@ -37,6 +44,8 @@ export const {
   showNewTodoForm,
   hideNewTodoForm,
   hideAllFormOverlays,
+  startListsLoading,
+  endListsLoading,
 } = lists.actions;
 
 export default lists.reducer;

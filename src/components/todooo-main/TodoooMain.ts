@@ -11,6 +11,8 @@ import '../todooo-dialog/todooo-dialog.js';
 import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
 import { todoooMainStyles } from './todooo-main.styles.js';
 import { ListsInterface } from '../../types/interfaces.js';
+import { isLoading } from '../../store/selectors/selectors.js';
+import store from '../../store/store.js';
 
 export class TodoooMain extends LitElement {
   @property({ type: Object }) user = {
@@ -42,7 +44,7 @@ export class TodoooMain extends LitElement {
         .user="${this.user}"
         ?userSettingsVisible="${this.userSettings.visible}"
       ></todooo-topbar>
-      <todooo-loader></todooo-loader>
+      <todooo-loader ?visible="${isLoading(store.getState())}"></todooo-loader>
       <todooo-stage
         .lists="${this.lists.lists}"
         .view="${this.view}"

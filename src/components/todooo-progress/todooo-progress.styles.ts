@@ -40,5 +40,6 @@ export const todoooProgressStyles = css`
     left: 0;
     top: 0;
     border-radius: var(--border-radius-normal);
+    transition: width var(--transition-speed) ease-in-out;
   }
 `;

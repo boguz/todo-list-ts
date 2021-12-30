@@ -7,6 +7,7 @@ import { calculatePercentage } from '../../utils/utils.js';
 import store from '../../store/store.js';
 import { setViewList } from '../../store/slices/view.slice.js';
 import { firestoreDeleteList } from '../../firestore/firestoreDeleteList.js';
+import { startListsLoading } from '../../store/slices/lists.slice.js';
 
 export class TodoooListTeaser extends LitElement {
   @property({ type: Object }) list: ListInterface = {
@@ -36,6 +37,7 @@ export class TodoooListTeaser extends LitElement {
       this.amountOfCheckedItems,
       this.list.todos!.length
     );
+
     this.style.setProperty(
       '--list-item-progress-percentage',
       this.percentage.toString()
@@ -81,7 +83,9 @@ export class TodoooListTeaser extends LitElement {
   }
 
   async _confirmListDelete() {
+    store.dispatch(startListsLoading());
     await firestoreDeleteList(this.list.id);
+
     this.dispatchEvent(
       new CustomEvent('todooo-dialog-hide', {
         bubbles: true,
