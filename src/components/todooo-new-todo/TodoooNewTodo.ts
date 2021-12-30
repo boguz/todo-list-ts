@@ -51,6 +51,12 @@ export class TodoooNewTodo extends LitElement {
     event.preventDefault();
     // @ts-ignore
     const newTodoName = this.shadowRoot.querySelector('.form__input').value;
+
+    if (newTodoName === '') {
+      this.style.setProperty('--form-error', 'block');
+      return;
+    }
+
     const selectedListId = store.getState().view.viewListId;
     if (newTodoName && selectedListId) {
       const newTodo = createNewTodo(newTodoName);
@@ -65,12 +71,25 @@ export class TodoooNewTodo extends LitElement {
     }
   }
 
+  _onFormInput() {
+    // @ts-ignore
+    const newTodoName = this.shadowRoot.querySelector('.form__input').value;
+    if (newTodoName !== '') {
+      this.style.setProperty('--form-error', 'none');
+    }
+  }
+
   render() {
     return html`
       <todooo-scrim @click="${this._onScrimClick}"></todooo-scrim>
       <section class="form-section">
         <form class="form" @submit="${this._onNewListFormSubmit}">
-          <input class="form__input" placeholder="New Item" />
+          <p class="form-error">Item name is still empty!</p>
+          <input
+            class="form__input"
+            placeholder="New Item"
+            @input="${this._onFormInput}"
+          />
           <button class="form__button" type="submit">Add</button>
         </form>
       </section>

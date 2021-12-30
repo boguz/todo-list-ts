@@ -90,6 +90,17 @@ export const todoooSharedStyles = [
       cursor: pointer;
     }
 
+    .form-error {
+      color: var(--color-warning);
+      grid-column: 1 / -1;
+      font-size: var(--font-size-small);
+      position: absolute;
+      top: 0;
+      transform: translateY(calc(-100% - var(--spacing-small)));
+      margin: 0;
+      display: var(--form-error, none);
+    }
+
     @media (hover: hover) {
       .button:hover {
         color: var(--color-highlight);

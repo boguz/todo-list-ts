@@ -51,6 +51,11 @@ export class TodoooNewList extends LitElement {
     event.preventDefault();
     // @ts-ignore
     const newListName = this.shadowRoot.querySelector('.form__input').value;
+    if (newListName === '') {
+      this.style.setProperty('--form-error', 'block');
+      return;
+    }
+
     if (newListName) {
       const newList = createNewList(newListName);
       try {
@@ -64,12 +69,25 @@ export class TodoooNewList extends LitElement {
     }
   }
 
+  _onFormInput() {
+    // @ts-ignore
+    const newListName = this.shadowRoot.querySelector('.form__input').value;
+    if (newListName !== '') {
+      this.style.setProperty('--form-error', 'none');
+    }
+  }
+
   render() {
     return html`
       <todooo-scrim @click="${this._onScrimClick}"></todooo-scrim>
       <section class="form-section">
         <form class="form" @submit="${this._onNewListFormSubmit}">
-          <input class="form__input" placeholder="New list" />
+          <p class="form-error">List name is still empty!</p>
+          <input
+            class="form__input"
+            placeholder="New list"
+            @input="${this._onFormInput}"
+          />
           <button class="form__button" type="submit">Create</button>
         </form>
       </section>
