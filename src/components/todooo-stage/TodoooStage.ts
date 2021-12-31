@@ -39,6 +39,26 @@ export class TodoooStage extends LitElement {
     return this.selectedList!.todos!.filter(todo => todo.checked);
   }
 
+  get allCheckedItems() {
+    let checkedItemsAmout = 0;
+    this.lists.forEach(list => {
+      list.todos?.forEach(todo => {
+        if (todo.checked) checkedItemsAmout++;
+      });
+    });
+    return checkedItemsAmout;
+  }
+
+  get itemsTotal() {
+    let itemsTotal = 0;
+    this.lists.forEach(list => {
+      if (list.todos) {
+        itemsTotal += list.todos.length;
+      }
+    });
+    return itemsTotal;
+  }
+
   render() {
     switch (this.view.viewName) {
       case 'list':
@@ -63,8 +83,8 @@ export class TodoooStage extends LitElement {
   _renderMain() {
     return html`
       <todooo-progress
-        .nonActiveListsAmount="${this.otherLists.length}"
-        .totalListsAmount="${this.lists.length}"
+        .nonActiveListsAmount="${this.allCheckedItems}"
+        .totalListsAmount="${this.itemsTotal}"
       >
       </todooo-progress>
       <todooo-list-teaser-group

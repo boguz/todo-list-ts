@@ -17,11 +17,14 @@ export class TodoooList extends LitElement {
   static styles = [...todoooSharedStyles, todoooListStyles];
 
   get sortedTodos() {
-    const sortedTodos = this.selectedList.todos.reduce(
-      (acc: TodoInterface[], todo: TodoInterface) =>
-        todo.checked ? [...acc, todo] : [todo, ...acc],
-      []
-    );
+    const todos = [...this.selectedList.todos];
+    const sortedTodos = todos
+      .reverse()
+      .reduce(
+        (acc: TodoInterface[], todo: TodoInterface) =>
+          todo.checked ? [...acc, todo] : [todo, ...acc],
+        []
+      );
     return sortedTodos;
   }
 

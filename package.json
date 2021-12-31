@@ -74,7 +74,8 @@
         {
           "allowTernary": true
         }
-      ]
+      ],
+      "no-plusplus": "off"
     }
   },
   "prettier": {

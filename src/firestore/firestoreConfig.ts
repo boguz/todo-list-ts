@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, enableIndexedDbPersistence } from 'firebase/firestore';
 
+// We must add the correct firebaseConfig for the app to work
 const firebaseConfig = {
   apiKey: 'AIzaSyBu4KlTbVc1XeynaPZQPL9FZVMaSxC51I8',
   authDomain: 'todooo-4pp.firebaseapp.com',
