@@ -50,14 +50,6 @@ export class TodoooApp extends LitElement {
     this._onStateChange(store.getState());
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-
-    document.addEventListener('test-event', () => {
-      console.log('GOT EVENT');
-    });
-  }
-
   _onStateChange(state: any) {
     this.user = state.user;
     this.userSettings = state.userSettings;

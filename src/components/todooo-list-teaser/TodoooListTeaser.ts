@@ -16,33 +16,31 @@ export class TodoooListTeaser extends LitElement {
     name: null,
   };
 
-  @property({ type: Number }) percentage = 0;
-
   static styles = [todoooSharedStyles, todoooListTeaserStyles];
 
   get amountOfCheckedItems() {
-    return this.list.todos!.filter(todo => todo.checked === false).length;
+    return this.list.todos!.filter(todo => todo.checked).length;
+  }
+
+  get percentage() {
+    const newPercentage = calculatePercentage(
+      this.amountOfCheckedItems,
+      this.list.todos!.length
+    );
+    this.style.setProperty(
+      '--list-item-teaser-progress-percentage',
+      newPercentage.toString()
+    );
+    return newPercentage;
   }
 
   constructor() {
     super();
-
     this._confirmListDelete = this._confirmListDelete.bind(this);
   }
 
   connectedCallback() {
     super.connectedCallback();
-
-    this.percentage = calculatePercentage(
-      this.amountOfCheckedItems,
-      this.list.todos!.length
-    );
-
-    this.style.setProperty(
-      '--list-item-progress-percentage',
-      this.percentage.toString()
-    );
-
     this.addEventListener('click', this._onTeaserClick);
   }
 

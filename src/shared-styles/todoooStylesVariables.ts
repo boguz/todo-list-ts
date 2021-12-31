@@ -56,7 +56,7 @@ export const todoooSharedVariables = css`
     /* LIST ITEM TEASER */
     --list-item-teaser-progress-size: 2rem;
     --list-item-teaser-progress-thickness: 3px;
-    --list-item-teaser-progress-percentage: 62;
+    --list-item-teaser-progress-percentage: 30;
     --list-item-teaser-delete-icon-size: 1.25rem;
 
     /* PROGRESS */
