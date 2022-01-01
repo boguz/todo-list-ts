@@ -11,6 +11,9 @@ export class TodoooProgress extends LitElement {
 
   static styles = [...todoooSharedStyles, todoooProgressStyles];
 
+  /**
+   * Calculate and set correct percentage variable
+   */
   setPercentage() {
     this.style.setProperty(
       '--progress-width',

@@ -2,6 +2,12 @@ import store from '../store/store.js';
 import { ListInterface, TodoInterface } from '../types/interfaces.js';
 import { firestoreUpdateUserLists } from './firestoreUpdateUserLists.js';
 
+/**
+ * Add a new todo to the user's currently selected list
+ *
+ * @param newTodo
+ * @param selectedListId
+ */
 export function firestoreAddTodo(
   newTodo: TodoInterface,
   selectedListId: string

@@ -2,6 +2,10 @@ import store from '../store/store.js';
 import { ListInterface } from '../types/interfaces.js';
 import { firestoreUpdateUserLists } from './firestoreUpdateUserLists.js';
 
+/**
+ * Toggle checked state of a todo
+ * @param todoId
+ */
 export function firestoreToggleTodo(todoId: string | null) {
   // @ts-ignore
   const userId: string = store.getState().user.id.toString();

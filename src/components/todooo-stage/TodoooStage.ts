@@ -17,6 +17,9 @@ export class TodoooStage extends LitElement {
 
   static styles = [todoooSharedStyles, todoooStageStyles];
 
+  /**
+   * Get only lists with active items
+   */
   get activeLists() {
     return this.lists.filter(list => {
       const checkedItems = list.todos!.filter(todo => todo.checked);
@@ -24,6 +27,9 @@ export class TodoooStage extends LitElement {
     });
   }
 
+  /**
+   * Get only list where all items are checked
+   */
   get otherLists() {
     return this.lists.filter(list => {
       const checkedItems = list.todos!.filter(todo => todo.checked);
@@ -31,14 +37,23 @@ export class TodoooStage extends LitElement {
     });
   }
 
+  /**
+   * Get the currently selected list
+   */
   get selectedList() {
     return this.lists.find(list => list.id === this.view.viewListId);
   }
 
+  /**
+   * Get all checked items on the selected list
+   */
   get checkedSelectedListItems() {
     return this.selectedList!.todos!.filter(todo => todo.checked);
   }
 
+  /**
+   * Get total of checked items on all lists
+   */
   get allCheckedItems() {
     let checkedItemsAmout = 0;
     this.lists.forEach(list => {
@@ -49,6 +64,9 @@ export class TodoooStage extends LitElement {
     return checkedItemsAmout;
   }
 
+  /**
+   * Get total number of items on all lists
+   */
   get itemsTotal() {
     let itemsTotal = 0;
     this.lists.forEach(list => {
@@ -69,6 +87,9 @@ export class TodoooStage extends LitElement {
     }
   }
 
+  /**
+   * Render list view
+   */
   _renderList() {
     return html`
       <todooo-progress
@@ -80,6 +101,9 @@ export class TodoooStage extends LitElement {
     `;
   }
 
+  /**
+   * Render main view
+   */
   _renderMain() {
     return html`
       <todooo-progress

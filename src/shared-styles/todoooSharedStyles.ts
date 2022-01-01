@@ -1,6 +1,9 @@
 import { css } from 'lit';
 import { todoooSharedVariables } from './todoooStylesVariables.js';
 
+/**
+ * Shared styles
+ */
 export const todoooSharedStyles = [
   todoooSharedVariables,
   css`

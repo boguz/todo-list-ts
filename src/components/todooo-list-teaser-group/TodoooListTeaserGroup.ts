@@ -1,7 +1,7 @@
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators.js';
-import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
 import { getRandomItemFromArray } from '../../utils/utils.js';
+import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
 import { emptyListMessages } from '../../utils/emptyListMessages.js';
 import { todoooListTeaserGroupStyles } from './todooo-list-teaser-group.styles.js';
 import '../todooo-list-teaser/todooo-list-teaser.js';
@@ -51,10 +51,17 @@ export class TodoooListTeaserGroup extends LitElement {
     `;
   }
 
+  /**
+   * Toggle the lists collapse state (show / hide the list's content)
+   */
   _toggleCollapseState() {
     this.collapsed = !this.collapsed;
   }
 
+  /**
+   * Toggle the list's collapse state also on Enter key press
+   * @param event
+   */
   _onHeaderKeyDown(event: KeyboardEvent) {
     if (event.code === 'Enter') {
       this._toggleCollapseState();

@@ -2,8 +2,8 @@ import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators.js';
 import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
 import { todoooDialogStyles } from './todooo-dialog.styles.js';
-import { CallbackInterface } from '../../types/interfaces.js';
 import '../todooo-scrim/todooo-scrim.js';
+import { CallbackInterface } from '../../types/interfaces.js';
 
 export class TodoooDialog extends LitElement {
   @property({ type: String }) question: string | null = null;
@@ -50,12 +50,25 @@ export class TodoooDialog extends LitElement {
     document.removeEventListener('todooo-dialog-hide', this._hideDialog);
   }
 
+  /**
+   * Show the dialog with correct information:
+   *  - change display variable value to show dialog
+   *  - show correct question
+   *  - set correct confirmation callback
+   *
+   * @param event
+   */
   _onDialogShow(event: CustomEvent) {
     this.style.setProperty('--dialog-display', 'flex');
     this.question = event.detail.question;
     this.confirmCallback = event.detail.confirmCallback;
   }
 
+  /**
+   * Hide the dialog:
+   *  - reset question
+   *  - set display variable value to hide dialog
+   */
   _hideDialog() {
     this.question = null;
     this.style.setProperty('--dialog-display', 'none');

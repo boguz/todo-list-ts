@@ -1,9 +1,9 @@
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators.js';
-import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
 import { createNewList } from '../../utils/createNewList.js';
 import { firestoreAddList } from '../../firestore/firestoreAddList.js';
 import store from '../../store/store.js';
+import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
 import {
   endListsLoading,
   hideNewListForm,
@@ -29,12 +29,20 @@ export class TodoooNewList extends LitElement {
     this.removeEventListener('keydown', this._onEscPress);
   }
 
+  /**
+   * Hide form on Esc key press
+   *
+   * @param event
+   */
   _onEscPress(event: KeyboardEvent) {
     if (event.key === 'Escape') {
       store.dispatch(hideNewListForm());
     }
   }
 
+  /**
+   * When element is shown, set focus on input
+   */
   firstUpdated() {
     if (this.shadowRoot!.querySelector('.form__input')) {
       const newListInput: HTMLInputElement =
@@ -43,10 +51,21 @@ export class TodoooNewList extends LitElement {
     }
   }
 
+  /**
+   * Hide the form when the scrim is clicked
+   */
   _onScrimClick() {
     store.dispatch(hideNewListForm());
   }
 
+  /**
+   * When the new list form is submited:
+   *  - Get the input value (show error message if empty)
+   *  - Create new list
+   *  - After list creation hide form
+   *
+   * @param event
+   */
   async _onNewListFormSubmit(event: SubmitEvent) {
     event.preventDefault();
     // @ts-ignore
@@ -69,6 +88,9 @@ export class TodoooNewList extends LitElement {
     }
   }
 
+  /**
+   * Check if form has content to remove error messoge
+   */
   _onFormInput() {
     // @ts-ignore
     const newListName = this.shadowRoot.querySelector('.form__input').value;

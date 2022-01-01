@@ -50,7 +50,6 @@ export const todoooListTeaserGroupStyles = css`
   .list {
     overflow: hidden;
     max-height: 1000px;
-    // transition: max-height var(--transition-speed) ease-in-out;
   }
 
   :host([collapsed]) .list {

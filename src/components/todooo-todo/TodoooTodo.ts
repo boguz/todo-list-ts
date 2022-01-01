@@ -1,11 +1,11 @@
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators.js';
+import store from '../../store/store.js';
 import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
 import { todoooTodoStyles } from './todooo-todo.styles.js';
+import { startListsLoading } from '../../store/slices/lists.slice.js';
 import { firestoreDeleteTodo } from '../../firestore/firestoreDeleteTodo.js';
 import { firestoreToggleTodo } from '../../firestore/firestoreToggleTodo.js';
-import store from '../../store/store.js';
-import { startListsLoading } from '../../store/slices/lists.slice.js';
 
 export class TodoooTodo extends LitElement {
   @property({ type: Object }) todo = {
@@ -32,10 +32,16 @@ export class TodoooTodo extends LitElement {
     this.removeEventListener('click', this._onClickEvent);
   }
 
+  /**
+   * Toggle a todo checked state on click
+   */
   _onClickEvent() {
     firestoreToggleTodo(this.todo.id);
   }
 
+  /**
+   * Show confirmation dialog when delete button is clicked
+   */
   _onDeleteButtonClick() {
     this.dispatchEvent(
       new CustomEvent('todooo-dialog-show', {
@@ -49,6 +55,11 @@ export class TodoooTodo extends LitElement {
     );
   }
 
+  /**
+   * After delete confirmation:
+   *  - delete todo from list
+   *  - hide confirmation dialog
+   */
   async _confirmTodoDelete() {
     store.dispatch(startListsLoading());
     await firestoreDeleteTodo(this.todo.id);

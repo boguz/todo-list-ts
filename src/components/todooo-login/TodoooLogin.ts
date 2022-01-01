@@ -20,13 +20,13 @@ export class TodoooLogin extends LitElement {
     `;
   }
 
+  /**
+   * Sign-in user using the Google Provider in a Popup window
+   */
   async _onLoginButtonClick() {
     const provider = new GoogleAuthProvider();
     signInWithPopup(firebaseAuth, provider).catch(error => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error(errorCode, errorMessage);
+      console.error(error.code, error.message);
     });
   }
 }

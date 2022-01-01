@@ -22,6 +22,9 @@ export class TodoooAddButton extends LitElement {
     `;
   }
 
+  /**
+   * On click, show the correct add form accordion to the current view
+   */
   _onButtonClick() {
     store.dispatch(hideUserSettings());
 
@@ -37,10 +40,16 @@ export class TodoooAddButton extends LitElement {
     }
   }
 
+  /**
+   * Show the new list form
+   */
   _showAddNewList() {
     store.dispatch(showNewListForm());
   }
 
+  /**
+   * Show the new todo form
+   */
   _showAddNewTodo() {
     store.dispatch(showNewTodoForm());
   }

@@ -23,7 +23,3 @@ So we can use the app again we need to:
 ## 📸 Inspiration
 - [Taskiller](https://dribbble.com/shots/4277574/attachments/4277574-Taskiller-mobile-to-do-manager?mode=media)
 - [Airbasket](https://dribbble.com/shots/6777609-Airbasket-App-Dark-Mode)
-
-## 🗃 Docs for used libraries
-- [Vaading router](https://vaadin.com/router)
-- [Vaadin router Example](https://www.thisdot.co/blog/routing-management-with-litelement)

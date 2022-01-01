@@ -26,7 +26,7 @@ export class TodoooTopbar extends LitElement {
         alt="Todooo app logo"
         class="topbar__logo"
         @click="${this._onLogoClick}"
-        @keydown="${this._onHeaderKeyDown}"
+        @keydown="${this._onHeaderLogoKeyDown}"
       />
       <button class="topbar__avatar" @click="${this._onAvatarClick}">
         ${this.user.avatarURL
@@ -43,11 +43,19 @@ export class TodoooTopbar extends LitElement {
     `;
   }
 
+  /**
+   * On logo click:
+   *  - go back to Main view
+   *  - hide all overlays
+   */
   _onLogoClick() {
     store.dispatch(setViewMain());
     store.dispatch(hideAllFormOverlays());
   }
 
+  /**
+   * Toggle user settings visibility on avatar click
+   */
   _onAvatarClick() {
     if (this.hasAttribute('usersettingsvisible')) {
       store.dispatch(hideUserSettings());
@@ -57,7 +65,13 @@ export class TodoooTopbar extends LitElement {
     }
   }
 
-  _onHeaderKeyDown(event: KeyboardEvent) {
+  /**
+   * When logo is selected, on Enter key press trigger a logo click:
+   *  - move to Main view
+   *
+   * @param event
+   */
+  _onHeaderLogoKeyDown(event: KeyboardEvent) {
     if (event.code === 'Enter') {
       this._onLogoClick();
     }

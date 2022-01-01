@@ -1,13 +1,13 @@
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators.js';
+import { calculatePercentage } from '../../utils/utils.js';
+import { firestoreDeleteList } from '../../firestore/firestoreDeleteList.js';
+import store from '../../store/store.js';
 import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
 import { todoooListTeaserStyles } from './todooo-list-teaser.styles.js';
-import { ListInterface } from '../../types/interfaces.js';
-import { calculatePercentage } from '../../utils/utils.js';
-import store from '../../store/store.js';
 import { setViewList } from '../../store/slices/view.slice.js';
-import { firestoreDeleteList } from '../../firestore/firestoreDeleteList.js';
 import { startListsLoading } from '../../store/slices/lists.slice.js';
+import { ListInterface } from '../../types/interfaces.js';
 
 export class TodoooListTeaser extends LitElement {
   @property({ type: Object }) list: ListInterface = {
@@ -18,10 +18,16 @@ export class TodoooListTeaser extends LitElement {
 
   static styles = [todoooSharedStyles, todoooListTeaserStyles];
 
+  /**
+   * Get number of checked todos on a list
+   */
   get amountOfCheckedItems() {
     return this.list.todos!.filter(todo => todo.checked).length;
   }
 
+  /**
+   * Get percentage of checked todos and update the progress element
+   */
   get percentage() {
     const newPercentage = calculatePercentage(
       this.amountOfCheckedItems,
@@ -62,10 +68,19 @@ export class TodoooListTeaser extends LitElement {
     `;
   }
 
+  /**
+   * Change to list view when a teaser is clicked
+   */
   _onTeaserClick() {
     store.dispatch(setViewList(this.list.id));
   }
 
+  /**
+   * When the delete button is clicked
+   *  - show delete dialog with correct data
+   *
+   * @param event
+   */
   _onDeleteClick(event: MouseEvent) {
     event.stopPropagation();
     this.dispatchEvent(
@@ -80,6 +95,11 @@ export class TodoooListTeaser extends LitElement {
     );
   }
 
+  /**
+   * After the user confirms list delete
+   *  - hide dialog
+   *  - delete list
+   */
   async _confirmListDelete() {
     store.dispatch(startListsLoading());
     this.dispatchEvent(

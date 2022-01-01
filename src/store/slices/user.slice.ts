@@ -1,6 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 // import { UserInterface } from "../../types.js";
 
+/**
+ * Actions and reducer relevant to the user:
+ *  - Login user (set user's profile data)
+ *  - Logout user (unset user's profile data)
+ */
 const user = createSlice({
   name: 'user',
   initialState: {

@@ -1,5 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+/**
+ * Actions / Reducers relevant to the lists:
+ *  - Set user lists
+ *  - Show new list form
+ *  - Hide new list form
+ *  - Show new todo form
+ *  - Hide new todo form
+ *  - Hide all overlays
+ *  - Start list loading
+ *  - End list loading
+ */
 const lists = createSlice({
   name: 'lists',
   initialState: {

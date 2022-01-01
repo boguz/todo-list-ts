@@ -13,6 +13,15 @@ import { setViewMain } from '../store/slices/view.slice.js';
 
 export const firebaseAuth = getAuth(firebaseApp);
 
+/**
+ * When firestore auth state changes.
+ *  if user is logged in (if 'user' object exists):
+ *    - set user profile data
+ *    - subscribe to user data
+ *  if user not logged in:
+ *    - make sure user is logged out (unset user profile data)
+ *    - make suer user settings are not visible
+ */
 firebaseAuth.onAuthStateChanged(async user => {
   if (user) {
     store.dispatch(startListsLoading());

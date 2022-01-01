@@ -1,3 +1,6 @@
+/**
+ * List of messages to show when a list is empty
+ */
 export const emptyListMessages = [
   'All done here!',
   'Well done, nothing to do!',

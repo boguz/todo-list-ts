@@ -5,6 +5,9 @@ import userSettingsReducer from './slices/userSettings.slice.js';
 import viewReducer from './slices/view.slice.js';
 import listsReducer from './slices/lists.slice.js';
 
+/**
+ * Root reducer, that combines all other reducers
+ */
 const rootReducer = combineReducers({
   user: userReducer,
   userSettings: userSettingsReducer,

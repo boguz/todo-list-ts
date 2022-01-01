@@ -2,6 +2,11 @@ import store from '../store/store.js';
 import { ListInterface } from '../types/interfaces.js';
 import { firestoreUpdateUserLists } from './firestoreUpdateUserLists.js';
 
+/**
+ * Delete a todo from a user
+ *
+ * @param todoId
+ */
 export function firestoreDeleteTodo(todoId: string | null) {
   // @ts-ignore
   const userId: string = store.getState().user.id.toString();

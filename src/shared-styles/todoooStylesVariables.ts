@@ -1,5 +1,8 @@
 import { css } from 'lit';
 
+/**
+ * CSS Variables, global and for each component
+ */
 export const todoooSharedVariables = css`
   :host {
     --color-bg-base: #26282c;

@@ -1,5 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+/**
+ * Actions and reducers relevant to the app views:
+ *  - Set main view
+ *  - Set list view
+ *  - Start view loading
+ *  - End view loading
+ */
 const view = createSlice({
   name: 'view',
   initialState: {

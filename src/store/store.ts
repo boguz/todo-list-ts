@@ -2,6 +2,9 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import rootReducer from './rootReducer.js';
 
+/**
+ * Create store
+ */
 const store = configureStore({
   reducer: rootReducer,
 });

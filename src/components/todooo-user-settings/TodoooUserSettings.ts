@@ -1,11 +1,11 @@
 import { LitElement, html } from 'lit';
 import { property } from 'lit/decorators.js';
+import store from '../../store/store.js';
 import { todoooSharedStyles } from '../../shared-styles/todoooSharedStyles.js';
 import { todoooUserSettingsStyles } from './todooo-user-settings.styles.js';
-import store from '../../store/store.js';
 import { hideUserSettings } from '../../store/slices/userSettings.slice.js';
-import '../todooo-scrim/todooo-scrim.js';
 import { firebaseAuth } from '../../firestore/firestoreAuth.js';
+import '../todooo-scrim/todooo-scrim.js';
 
 export class TodoooUserSettings extends LitElement {
   @property({ type: Boolean }) visible = false;
@@ -33,10 +33,16 @@ export class TodoooUserSettings extends LitElement {
     `;
   }
 
+  /**
+   * Hide the user settings on scrim click
+   */
   _onScrimClick() {
     store.dispatch(hideUserSettings());
   }
 
+  /**
+   * Log out user
+   */
   _onLogoutClick() {
     firebaseAuth.signOut();
   }

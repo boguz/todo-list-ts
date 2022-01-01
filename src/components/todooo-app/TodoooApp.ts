@@ -2,9 +2,9 @@ import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
 import store from '../../store/store.js';
 import '../../firestore/firestore.js';
-import { ListsInterface } from '../../types/interfaces.js';
 import '../todooo-login/todooo-login.js';
 import '../todooo-main/todooo-main.js';
+import { ListsInterface } from '../../types/interfaces.js';
 
 export class TodoooApp extends LitElement {
   @property({ type: Object }) state = {};
@@ -50,6 +50,11 @@ export class TodoooApp extends LitElement {
     this._onStateChange(store.getState());
   }
 
+  /**
+   * Get relevant data from state whenever it changes
+   *
+   * @param state
+   */
   _onStateChange(state: any) {
     this.user = state.user;
     this.userSettings = state.userSettings;
