@@ -3,12 +3,12 @@ import { getFirestore, enableIndexedDbPersistence } from 'firebase/firestore';
 
 // We must add the correct firebaseConfig for the app to work
 const firebaseConfig = {
-  apiKey: 'AIzaSyBu4KlTbVc1XeynaPZQPL9FZVMaSxC51I8',
-  authDomain: 'todooo-4pp.firebaseapp.com',
-  projectId: 'todooo-4pp',
-  storageBucket: 'todooo-4pp.appspot.com',
-  messagingSenderId: '698178879021',
-  appId: '1:698178879021:web:633fe37c80b196dfe142a4',
+  apiKey: '.....',
+  authDomain: '.....',
+  projectId: '.....',
+  storageBucket: '.....',
+  messagingSenderId: '.....',
+  appId: '.....',
 };
 
 // Initialize Firebase
